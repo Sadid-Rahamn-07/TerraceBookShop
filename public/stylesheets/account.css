@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background: radial-gradient(#fff, green);
+}
+
+
+/*New navbar test*/
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+background-color:radial-gradient(#fff, green);
+  width: 100%;
+  padding: 10px 20px;
+  position: relative;
+}
+
+
+.topnav .logo img {
+    width: 115px;
+    height: 115px;
+    border-radius: 20%;
+    margin-left: 10px;
+    display: block;
+}
+.topnav .logo img:hover {
+    transform: scale(1.05)
+}
+
+/*Search bar style*/
+
+.container-1{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.search {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    background: white;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+#search-box {
+  position: absolute;
+  height: 33.5px;
+  border: none;
+  font-size: 17px;
+  border-radius: 20px;
+  padding: 0 20px;
+  opacity: 1;
+}
+
+.search button {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    text-align: center;
+    background: rgb(192, 133, 16);
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main_body {
+    display: flex;
+    flex: 1;
+    /* margin-top: 10px; */
+}
+
+.sidenav {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-right: 6px;
+    border-right: 1px solid #ccc;
+}
+
+.sidenav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    font-size: large;
+}
+.sidenav a:hover{
+    background-color: #2fe17f;
+    border-radius: 10px;
+}
+
+.sidenav a.active {
+    background-color:rgb(192, 133, 16);
+    color: rgb(6, 6, 6);
+    border-radius: 10px;
+}
+.popup-buttons {
+    display: flex;
+    gap: 5px;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    display: none;
+}
+
+.container-2 {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-2 h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.container-2 h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.form-group .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group small {
+    display: block;
+    color: #888;
+    margin-top: 5px;
+}
+
+.input_box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.radio_box_for_gender {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.radio_box_for_gender input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+.image_upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.image_file_information {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.save_image {
+    background-color: #00509e;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout_button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+/* Tab and Search Bar Styles */
+.tab-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.tab {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.tab button.active {
+    background-color: #00509e;
+    color: white;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.search_bar {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.search_bar .search {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+}
+
+.search_bar button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00509e;
+    color: white;
+    cursor: pointer;
+}
+
+.review_image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.review_image img {
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 5px;
+}
+
+.review_image button {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review_image button:hover {
+    background-color: #450707;
+}
+
+
+
+.book-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+
+.book-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-weight: bold;
+}
+
+
+.book-form h3 {
+    text-align: center;
+    font-size: 25px;
+}
+
+#bookCondition {
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+#bookDescription {
+    width: 80%;
+    border-radius: 5px;
+}
+
+.book-form input,
+.book-form {
+    width: 80%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #0e0e0e;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.book-form textarea {
+    resize: vertical;
+}
+
+.book-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.book-form button:hover {
+    background-color: #45a049;
+}
+
+.book-form button:last-child {
+    background-color: #f44336;
+
+}
+
+.book-form button:last-child:hover {
+    background-color: #d32f2f;
+}
+
+
+#post .add_book {
+    text-align: center;
+    text-decoration: solid;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#autocomplete-display {
+    display: block;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+    margin: auto;
+    transition: transform 0.3s;
+}
+
+#book_suggestion:hover p {
+    background-color: #333;
+    color: white;
+}
+
+
+
+/* For screens smaller than 768px (e.g., tablets and large phones) */
+@media (max-width: 768px) {
+
+.logo img {
+    cursor: pointer;
+    margin-left:0;
+}
+
+    .main_body {
+        flex-direction: column;
+    }
+
+    .sidenav {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+
+    }
+
+    #bookCondition{
+        flex-wrap: wrap;
+    }
+    .sidenav a {
+        flex: 1;
+        text-align: center;
+        border-bottom: none;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .container-2 {
+        padding: 0 10px;
+    }
+
+    .input_box,
+    .radio_box_for_gender,
+    .image_upload,
+    .tab,
+    .search_bar,
+    .popup-buttons {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .save_image,
+    .logout_button,
+    .book-form button,
+    #post .add_book {
+        margin-right: 0;
+    }
+
+    .current_profile img {
+        max-width: 80px;
+    }
+
+    .review_image {
+        padding: 10px;
+    }
+    .review_image button:hover {
+    background-color: #450707;
+}
+    .review_image img {
+        max-width: 95%;
+    }
+}
+
+.btn {
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: #563434;
+}

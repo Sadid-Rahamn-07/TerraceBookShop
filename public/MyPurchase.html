@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terrace Bookshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/account.css">
+    <link rel="stylesheet" href="/stylesheets/book_card.css"/>
+    <link rel="stylesheet" href="/stylesheets/review.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <header>
+        <div id="app" class="header">
+            <div id="navi" class="topnav">
+                <a href="index.html" class="logo">
+                    <img id="brand_logo" src="images/logo.png" alt="logo">
+                </a>
+
+                <div class="container-1">
+                    <form  class="search" id="search-bar">
+                        <input  type="search" name="search" placeholder="search here..." id="search-box">
+                        <button type="submit" class="fa fa-search" aria-label="Search"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main_body">
+        <div class="sidenav">
+            <a href="account.html" data-target="myAccount">My Account</a>
+            <a href="MyPurchase.html" class="active" data-target="myPurchase">My Purchase</a>
+            <a href="account.html#clickButton" data-target="MySale">MySale</a>
+            <a href="wishlist.html" data-target="Wishlist">Wishlist</a>
+        </div>
+
+        <div id="myPurchase" class="content" style="display: block;">
+
+            <div class="tab-container">
+
+                <div id="customer_purchase" class="tabcontent">
+                    <h3>Orders</h3>
+                </div>
+
+                <div v-if="books.length !== 0">
+                    <a href="export/export_purchases_pdf" class="btn" download>
+                        Export Purchased Books to PDF
+                    </a>
+                </div>
+
+
+                <div id = "purchase_items_container">
+                    <div v-if="books.length === 0"><h3 style="text-align: center;">Empty Purchase History</h3></div>
+                    <div v-for="book in books" :key="book.book_id" class="card">
+                        <div id="book_wrapper" style="margin:10px; text-align: left; display:block">
+                            <img :src="'./uploads/' + book.image" alt="Book Image" style="float:left;">
+                            <div style="display:inline-block; width: 60%; margin-left: 10px; text-align: left;">
+                            <h2>{{ book.book_title || 'No Title Available' }}</h2>
+                            <h4>{{ book.author_name || 'No Author Available' }}</h4>
+                            <p><strong>Condition:</strong> {{ book.book_condition || 'No Condition Available' }}</p>
+                            <p><strong>Price:</strong> {{ book.price || 'No Price Available' }}</p>
+                            <p><strong>Seller:</strong> {{ book.seller_name || 'No Seller Name' }}</p>
+                        </div>
+
+                        <div style="display:inline-block; width: 100%;">
+                            <button
+                                v-if="!hasReview(book.purchase_id)"
+                                type="button"
+                                class="btn"
+                                style="float:right; margin:10px; margin-bottom:20px"
+                                @click="openReview(book.purchase_id)"
+                                >
+                                Review Purchase
+                            </button>
+
+                            <button
+                                v-else
+                                type="button"
+                                class="btn"
+                                style="float:right; margin:10px; margin-bottom:20px"
+                                @click="showReview(book.purchase_id)"
+                                >
+                                Show Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="pop_up_review_page" v-if="start_review">
+            <div id="pop_up_inner">
+                <h1>Review for the seller</h1>
+                <form id="review_form">
+                    <input type="number" hidden name="rating" :value="reviewData.ratings">
+                    <button
+                            type="button"
+                            v-for="(star, index) in 5" :key="index"
+                            class="review_star"
+                            :class="{ readonly: review_mode === 'view' }"
+                            @click="review_mode === 'write' && (reviewData.ratings = index + 1)"
+                        >
+                        {{ index < reviewData.ratings ? "★" : "☆" }}
+                    </button>
+                </form>
+                <textarea
+                    name="reviews"
+                    placeholder="Review here..."
+                    id="review_string"
+                    v-model="reviewData.review_string"
+                    :readonly="review_mode === 'view'"
+                ></textarea>
+                <div id="review_buttons">
+                    <button type="button" class="btn" id="close_review" @click="cancelReview()">Close</button>
+                    <button
+                        v-if="review_mode === 'write'"
+                        type="button"
+                        class="btn"
+                        id="submit_review"
+                        @click="submitReview()"
+                    >Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+<script src="javascripts/purchase.js"></script>

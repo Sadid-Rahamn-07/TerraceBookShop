@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+      <link rel="stylesheet" href="stylesheets/admin.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app" class="admin_panel">
+        <aside class="side_nav">
+            <nav>
+                <ul>
+                    <li v-on:click="current_view ='dashboard'" v-bind:class="{ active: current_view === 'dashboard'}">Dashboard</li>
+                    <li v-on:click="current_view ='users'" v-bind:class="{ active: current_view === 'users'}">Users</li>
+                </ul>
+            </nav>
+
+        </aside>
+        <hr>
+        <main class="content">
+            <header class="header">
+                <h1>Admin Panel - {{ capitalize(current_view)}}</h1>
+            </header>
+            <section v-if="current_view === 'dashboard'" class="dashboard_view">
+                <h2> Welcome to the Admin Dashboard</h2>
+                <p>Check overview of system activities</p>
+            </section>
+
+            <section v-if="current_view === 'users'" class="users_view">
+                <h2>User Management</h2>
+                <button type="button" v-on:click="add_user_modal()" class="add_user_btn">Add New User</button>
+                <h3>All Users</h3>
+                <div class="user_list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Profile Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users" v-bind:key="user.id">
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.phone_number ? user.phone_number : 'NA'}}</td>
+                                <td>{{ user.address ? user.address : 'NA'}}</td>
+                                <td>
+                                    <div v-if="user.profile_image">
+                                        <img :src="user.profile_image" alt="Profile Image" style="width: 50px; height: 50px; object-fit: cover;
+                                        border-radius: 50%;" />
+                                    </div>
+                                    <div v-else>
+                                        NA
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" v-on:click="edit_user(user)">Edit</button>
+                                    <button type="button" v-on:click="remove_user(user.id)" class="delete_btn">Remove</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div v-if="show_user_form_modal" class="modal_display" @click.self="close_user_form_modal">
+                    <div class="modal_content">
+                        <h3>{{ editing_user ? 'Edit User Information' : 'Add New User' }}</h3>
+                        <form @submit.prevent="save_user">
+                            <div class="form_group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="name" v-model="new_user.username" required>
+                            </div>
+                            <div class="form_group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" v-model="new_user.email" required>
+                            </div>
+                            <div class="form_group" v-if="!editing_user">
+                                <label for="password">Password:</label>
+                                <input id="password" type="text" v-model="new_user.password" required>
+                            </div>
+
+                            <template v-if="editing_user">
+                                <div class="form_group">
+                                    <label for="phone">Phone Number:</label>
+                                    <input type="tel" id="phone" v-model="new_user.phone_number" required>
+                                </div>
+                                <div class="form_group">
+                                    <label for="address">Address:</label>
+                                    <input type="text" id="address" v-model="new_user.address" required>
+                                </div>
+                                <div class="form_group">
+                                    <label>Profile Picture:</label>
+                                    <div class="profile_picture">
+                                    <div v-if="new_user.profile_image">
+                                        <img :src="new_user.profile_image"
+                                            style="width:50px;height:50px;border-radius:50%;object-fit:cover" />
+                                    </div>
+                                    <div v-else>NA</div>
+                                    <button type="button" @click="reset_avatar">
+                                        Reset Profile Image To Default
+                                    </button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <div class="form_actions">
+                                <button type="submit">
+                                    {{ editing_user ? 'Update User' : 'Add User' }}
+                                </button>
+                                <button type="button" @click="close_user_form_modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+<script src="/javascripts/admin.js"></script>

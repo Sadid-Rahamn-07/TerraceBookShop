@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Terrace Bookshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="stylesheets/account.css">
+    <link rel="stylesheet" href="/stylesheets/book_card.css"/>
+    <link rel="stylesheet" href="/stylesheets/search.css"/>
+</head>
+
+<body>
+    <header>
+        <div id="app" class="header">
+            <div id="navi" class="topnav">
+                <a href="index.html" class="logo">
+                    <img id="brand_logo" src="images/logo.png" alt="logo">
+                </a>
+
+                <!-- <div class="container-1">
+                    <form  class="search" id="search-bar">
+                        <input  type="search" name="search" placeholder="search here..." id="search-box">
+                        <button type="submit" class="fa fa-search" aria-label="Search"></button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </header>
+
+    <div class="main_body">
+        <div class="sidenav">
+            <a class="active" href="#" data-target="myAccount">My Account</a>
+            <a href="MyPurchase.html" data-target="myPurchase">My Purchase</a>
+            <a id="mysale_btn" href="#" data-target="MySale">MySale</a>
+            <a href="wishlist.html" data-target="Wishlist">Wishlist</a>
+        </div>
+        <hr>
+        <!---MY Account section-->
+        <div id="myAccount" class="content">
+            <div class="container-2">
+                <h1>My Profile</h1>
+                <h2>Manage and protect your account</h2>
+
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="input" type="text" id="name" placeholder="It will show user-name">
+                        <small>Username can only be changed once.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input class="input" type="text" id="address" placeholder="It will show address of that user">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input_box">
+                            <input class="input" type="email" id="email" placeholder="It will show email of that user">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input class="input" type="text" id="phone"
+                            placeholder="It will show phone_number of that user">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio_box_for_gender">
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                            <input type="radio" id="other" name="gender" value="prefer_not_to_say">
+                            <label for="other">Prefer Not to Say</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of birth</label>
+                        <div class="input_box">
+                            <select id="year"></select>
+                            <select id="month"></select>
+                            <select id="date"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Profile Image</label>
+                        <div class="image_upload">
+                            <div class="current_profile">
+                                <img id="currentProfileImage" src="images/user_profile_photos/user_1.jpg"
+                                    alt="Current Profile" style="max-width: 150px; border-radius: 8px;">
+                            </div>
+                            <input name="profile_photo" class="input" type="file" id="image" accept="image/*" >
+
+                        </div>
+                        <div class="image_file_information">File size: maximum 1 MB, File extension: JPEG, PNG</div>
+
+                    </div>
+                    <button type="submit" id="update" class="save_image">Update</button>
+                    <button type="submit" class="logout_button">Logout</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="imagePreviewPopup" class="review_image">
+            <img id="previewImage" src="#" alt="Image Preview">
+            <div class="popup-buttons">
+                <button type="button" id="selectImageButton">Select</button>
+                <button type="button" id="unselectImageButton">Unselect</button>
+            </div>
+        </div>
+
+        <!--MY sale section--->
+        <div id="MySale" class="content">
+            <div id="my_sale">
+                <div class="tab-container">
+                    <!--sale tab toggle-->
+                    <div class="tab">
+                        <button id="posted_btn" type="button" class="tablinks" :class="{ active: sale_tab === 'posted' }"
+                            v-on:click="sale_tab = 'posted'">Posted Products</button>
+                        <button type="button" class="tablinks" :class="{ active: sale_tab === 'post' }"
+                            v-on:click="sale_tab = 'post'">Post a Product</button>
+                    </div>
+
+                    <!--POST BOOKS-->
+                    <div id="post" class="tabcontent" v-if="sale_tab === 'post'">
+                        <h3>ADD your book here!!!</h3>
+                        <button type="button" class="add_book" v-on:click="showBookForm = true">Add Your Book</button>
+
+                        <!--POST BOOK FORM-->
+                        <div v-if="showBookForm" class="book-form">
+                            <h3>Book Details</h3>
+                            <form method="POST">
+                                <label for="bookTitle">Title:</label>
+                                <input type="text" id="bookTitle" v-model="bookDetails.title" required><br><br>
+
+                                <label for="bookAuthor">Author:</label>
+                                <input type="text" id="bookAuthor" v-model="bookDetails.author" required><br><br>
+
+                                <label for="bookISBN">ISBN:</label>
+                                <input type="text" id="bookISBN" v-model="bookDetails.isbn"><br><br>
+
+                                <label for="bookPrice">Price:</label>
+                                <input type="number" id="bookPrice" v-model="bookDetails.price" step="0.01"
+                                    required><br><br>
+
+                                <label for="bookImage">Upload Book Cover</label>
+                                <input ref="fileInput" type="file" id="bookImage" accept="image/*" @change="onFileChange"
+                                required><br><br>
+
+                                <label for="bookCondition">Condition:</label>
+                                <select id="bookCondition" v-model="bookDetails.condition" required>
+                                    <option value="">--Please choose an option--</option>
+                                    <option value="new">New</option>
+                                    <option value="like-new">Like New</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                </select>
+                                <br><br>
+
+                                <label for="bookDescription">Description:</label><br>
+                                <textarea id="bookDescription" v-model="bookDetails.description"></textarea><br><br>
+
+                                <button type="submit" v-on:click.prevent="submitBook">Submit Book</button>
+                                <button type="button" v-on:click="showBookForm = false">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!--POSTED BOOKS-->
+                    <div id="posted" class="tabcontent" v-if="sale_tab === 'posted'">
+                        <h3>Posted Products</h3>
+                        <p>This is where you can search your currently posted products.</p>
+                    </div>
+                    <br>
+                    <!--Search bar for posted products-->
+                    <div class="search_bar" v-show="sale_tab === 'posted'">
+                        <input id="search_box" class="search" type="text" placeholder="Search your posted products...">
+                        <button id="search_btn" type="button" class="fa fa-search" aria-label="posted product"></button>
+                    </div>
+
+
+                    <div v-show="sale_tab === 'posted'" id="autocomplete-display">
+
+                    </div>
+
+                    <br>
+
+                    <div v-show="sale_tab === 'posted'" id="posted_books_displayer">
+
+                    </div>
+                    <!--POSTED BOOKS ENDS-->
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Mysale section ENDS-->
+    <script src="javascripts/account.js"></script>
+    <script src="javascripts/show_posted_book.js"></script>
+</body>
+
+</html>

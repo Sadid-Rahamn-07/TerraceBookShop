@@ -1,0 +1,59 @@
+  #display-container {
+    text-align: center; /* Center cards horizontally */
+  }
+
+  .card {
+    display: block; /* Inline block for cards */
+    background-color: #f9f9f9;
+    margin: 10px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card img {
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  #autocomplete-display {
+    display: block;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 90%; /* responsive on smaller screens */
+    position: fixed; /* fixed to viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center both horizontally and vertically */
+    transition: transform 0.3s;
+    z-index: 1000; /* ensure it sits above other content */
+  }
+
+  #book_suggestion:hover p{
+    background-color: #333;
+    color: white;
+  }
+
+  #market_header{
+    margin: 30px;
+    font-size: 50px;
+    padding: 0px;
+  }
+
+

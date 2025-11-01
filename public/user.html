@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Sign Up</title>
+    <link rel="stylesheet" href="/stylesheets/user.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div class="usercontainer">
+        <div class="form_for_login_signup">
+            <div class="form login">
+                <form id="loginForm">
+                    <h2>Login</h2>
+                    <div class="user_input">
+                        <input type="text" placeholder="Username" required>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="user_input">
+                        <input type="password" placeholder="Password" required>
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <!-- <div class="remember_forgot_password_box">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#" id="forgot_password_link">Forgot Password?</a>
+                    </div> -->
+                    <button type="submit" class="btn">Login</button>
+
+                    <div class="registration">
+                        <p>Don't have an account? <a href="#" class="register-link">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form register ">
+                <form id="registerForm">
+                    <h2>Sign Up</h2>
+                    <div class="user_input">
+                        <input type="text" placeholder="Username" required>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="user_input">
+                        <input type="email" placeholder="Email" required>
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="user_input">
+                        <input type="password" placeholder="Password" required>
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <div class="login_link">
+                        <p>Already have an account? <a href="#" class="login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="forgot_modal" class="modal">
+        <div class="modal_content">
+            <span class="close_button">&times;</span>
+            <h2>Forgot Password</h2>
+            <form class="forgot_password">
+                <div class="user_input">
+                    <input type="text" placeholder="Username" required>
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="user_input">
+                    <input type="email" placeholder="Email Address" required>
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <button type="submit" class="btn">Reset Password</button>
+            </form>
+        </div>
+    </div> -->
+
+    <script src="javascripts/user.js"></script>
+    <script src="/javascripts/home.js"></script>
+</body>
+
+</html>

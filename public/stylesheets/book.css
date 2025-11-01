@@ -1,0 +1,273 @@
+#navbar {
+    display: flex;
+    gap: 15em;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    max-width: 2200px;
+}
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:radial-gradient(#fff, green);
+    width: 100%;
+    padding: 10px 20px;
+    position: relative;
+}
+
+#navbar-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#container-1 {
+    align-items: center;
+    padding: 0em;
+}
+
+#product_wrapper{
+    display: flex;
+    /*below two helps to center the divs*/
+    gap: 15em;
+    justify-content: center;
+    align-items: 10pt;
+    flex-wrap: wrap;
+    align-content: center;
+    max-width: 2000px;
+    /* margin: 2em auto; */
+    padding: 4em 2em;
+}
+
+.container_box{
+    /* background-color: white; */
+
+    position: relative; /*This is for anchor to position the wishlist hear*/
+
+    width: fit-content;
+    height: fit-content;
+
+    /* padding-top: 6em;
+    padding-bottom: 6em;
+    padding-left: 2.8em;
+    padding-right: 2.8em; */
+
+
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    /* box-shadow: 0em 0em 1em 1em rgba(0, 0, 0, 0.02); */
+    border-radius: 1em;
+}
+
+/*Start inside product_container*/
+    #book_wishlist_icon{
+        font-size: 20pt;
+
+        position: absolute;
+
+        margin: 0.5em;
+        top: 0;
+        right: 0;
+    }
+
+    #book_image{
+        width: 280px;
+        height: 446px;
+    }
+
+/*End inside product_container*/
+
+/*Start inside book_information*/
+    #book_information_container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 640px;
+    }
+    #book_information_container h3{
+        font-size: 10pt;
+    }
+    #book_title{
+        font-size: 13pt;
+
+        top: 0;
+        left: 0;
+    }
+    #book_author p{
+        font-size: 13pt;
+    }
+    .seller_name h3{
+        font-size: 13pt;
+        display: block;
+    }
+    .seller_name span{
+        display: block;
+        font-style: italic;
+        font-size: 13pt;
+        margin-left: 50px;
+    }
+    #posted_date{
+        font-size: 10pt;
+    }
+    #posted_date h3{
+        font-size: 13pt;
+    }
+    #book_condition h3{
+        font-size: 13pt;
+    }
+    #book_condition span{
+        display: block;
+        font-style: italic;
+        font-size: 13pt;
+        margin-left: 50px;
+    }
+    #posted_date span{
+        display: block;
+        font-style: italic;
+        font-size: 13pt;
+        margin-left: 50px;
+    }
+    #book_description{
+        font-size: 10pt;
+
+        max-height: 1000px;
+    }
+    #book_description h3{
+        font-size: 13pt;
+    }
+    #book_description p{
+        font-size: 13pt;
+        text-indent:50px;
+        max-height: 200px;
+    }
+/*End inside book_information*/
+
+#book_transaction_container {
+    background-color: transparent;
+
+    /* border-radius: 1em; */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+
+    width: 250px;
+    height: 250px;
+}
+
+#book_price{
+    text-align: center;
+    line-height: 2;
+}
+
+#book_price h1 {
+    font-size: 2em;
+    color: #111;
+}
+
+.action_button {
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 6px 8px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.action_button:hover{
+    background: #563434;
+}
+
+/*review and rating section*/
+#product_rr{
+    gap: 15em;
+    justify-content: left;
+    align-items: 10pt;
+
+    max-width: 2000px;
+    margin: 2em auto;
+
+    padding: 4em 2em;
+
+    background-color: white;
+}
+
+#user_reviews_container{
+    padding: 0 0 5em 5em;
+    margin: 2em 2em 0 0;
+}
+
+#reviews_ratings {
+    margin-top: 10px;
+}
+
+#user_reviews_box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 300px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user_logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.review_card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.review_name {
+    font-weight: bold;
+    font-size: 13pt;
+    margin-bottom: 5px;
+}
+
+#review_comment {
+    margin: 0 0 8px 0;
+    font-size: 15pt;
+}
+
+#review_stars {
+    color: #FFD700; /* gold */
+    font-size: 16pt;
+}
+
+@media (max-width: 600px) {
+    .review_card {
+        padding: 10px;
+    }
+
+    .user_logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .review_comment,
+    .review_stars {
+        font-size: 14px;
+    }
+}
+
+#showing_button_container{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}

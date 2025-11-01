@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Terrace Bookshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="stylesheets/account.css">
+</head>
+<body>
+    <header>
+        <div id="app" class="header">
+            <div id="navi" class="topnav">
+                <a href="index.html" class="logo">
+                    <img id="brand_logo" src="images/logo.png" alt="logo">
+                </a>
+
+                <div class="container-1">
+                    <form  class="search" id="search-bar">
+                        <input  type="search" name="search" placeholder="search here..." id="search-box">
+                        <button type="submit" class="fa fa-search" aria-label="Search"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+        <div class="main_body">
+        <div class="sidenav">
+            <a href="account.html" data-target="myAccount">My Account</a>
+            <a href="MyPurchase.html" data-target="myPurchase">My Purchase</a>
+            <a href="account.html#clickButton" data-target="MySale">MySale</a>
+            <a class="active" href="wishlist.html" data-target="Wishlist">Wishlist</a>
+        </div>
+        <div id="Wishlist" class="content" style="display: block;">
+            <div class="tab-container">
+                <div class="tab">
+                    <button type="button" class="tablinks" :class="{ active: wishlist_tab === 'current' }"
+                        v-on:click="reloadPage('current')">My Wishlist</button>
+                    <button type="button" class="tablinks" :class="{ active: wishlist_tab === 'add_new' }"
+                        v-on:click="wishlist_tab = 'add_new'">Add Books In Wishlist</button>
+                </div>
+
+                <!--This is for displaying the external current wishlist-->
+                <div id="shown_display_container" v-show="wishlist_tab === 'current'"></div>
+
+                <!--This search bar will use to add new books in wishlist-->
+                <div class="search_bar" v-show="wishlist_tab === 'add_new'">
+                    <input id = "wishlist_search" class="search" type="text" placeholder="Search new books here...">
+                    <button type="button" class="fa fa-search" aria-label="add new book in wishlist"></button>
+                </div>
+                <!--This is for displaying the external book-->
+                <div id="search_display_container" v-show="wishlist_tab === 'add_new'"></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="javascripts/wishlist.js"></script>

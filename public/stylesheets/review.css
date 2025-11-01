@@ -1,0 +1,60 @@
+#pop_up_review_page{
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pop_up_inner{
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    height: 60%;
+    width: 45%;
+    padding: 1em;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+#pop_up_inner textarea{
+    border-radius: 4px;
+    resize: none;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16pt;
+    resize: none;
+}
+
+#review_form{
+    background-color: rgb(240, 240, 240);
+}
+
+.review_star{
+    font-size: 40pt;
+    font-weight: 1000;
+    color: rgb(255, 183, 57);
+
+    /*To remove the border of the button*/
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#review_buttons{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="stylesheets/navbar.css">
+
+    <link rel="stylesheet" href="/stylesheets/cart.css">
+    <link rel="stylesheet" href="stylesheets/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+<!--Put the header here-->
+  <header>
+    <div id="app" class="header">
+      <div id="navi" class="topnav">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <a class="logo">
+          <img id="brand_logo" src="images/logo.png" alt="logo">
+        </a>
+
+        <div class="container-1">
+          <form onsubmit="search_books(event)" class="search" id="search-bar">
+            <input onclick="showPopup()" type="search" name="search" placeholder="search here..." id="search-box">
+            <button type="submit" class="fa fa-search" aria-label="Search"></button>
+          </form>
+          <div onclick="hidePopup()" id="popup-backdrop"></div>
+          <div id="autocomplete-display"></div>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+          <a class="nav-item" href="/index.html">Home</a>
+          <a class="nav-item" :href="linkUrl">{{username || 'Login'}}</a>
+          <a class="nav-item user_icon">
+           <img v-if="linkUrl !== '/user.html'"  :src="image_path" alt="User Icon" class="user_logo">
+          </a>
+          <a class="nav-item shopping_cart" href="wishlist.html"><i class="fas fa-heart shopping-icon"></i></a>
+          <a class="nav-item shopping_icon active" href="shopping_cart.html"><i class="fas fa-shopping-cart shopping-icon"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+  </header><div id="items_list"></div>
+
+<div class="cart-footer">
+    <div class="left-section">
+        <input type="checkbox" id="select-all">
+        <label for="select-all">Select All</label>
+    </div>
+
+    <div id="vue_display_price">
+        <div id="checkout" class="summary-section">
+            <span>Total :</span>
+            <span class="total-price">{{totalprice}}</span>
+            <button class="checkout-button">Check Out</button>
+        </div>
+
+        <div id="pop-up">
+            <div class="content">
+                <h2>Confirm purchase</h2>
+                <p><strong>Price: </strong><span>{{totalprice}}</span></p>
+                <form>
+                    <label>Name: </label>
+                    <input type="text" placeholder="Your Name"><br><br>
+                    <label>Address:</label>
+                    <input type="text" placeholder="Delivery address"><br><br>
+                    <button type="button" id="confirm_button">Confirm</button>
+                    <button type="button" id="cancel_button">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="javascripts/home.js" defer></script>
+<script src="javascripts/cart.js" defer></script>

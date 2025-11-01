@@ -1,0 +1,156 @@
+/* CSS for navbar */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  padding: 0 20px;
+  position: absolute;
+}
+
+.topnav a {
+  color: #090909;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 5px;
+}
+
+.topnav a:hover {
+  background-color: #2fe17f;
+  color: black;
+  border-radius: 14px;
+}
+
+.topnav a.active {
+  background-color: rgb(192, 133, 16);
+  border-radius: 14px;
+  color: black;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  /* vertically center */
+  justify-content: center;
+  /* horizontally center */
+  text-align: center;
+}
+
+.topnav a.logo {
+  padding: 0;
+  background-color: transparent;
+}
+
+.topnav .logo img {
+  width: 115px;
+  height: 115px;
+  border-radius: 20%;
+  margin-left: 10px;
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.topnav #autocomplete-display a:hover {
+  background-color: transparent;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* navbar on scroll down */
+.topnav.scrolled {
+  background-color: #90C67C;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+#popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: none;
+}
+
+/*navbar css*/
+
+/* Responsive Styles */
+@media screen and (max-width: 1100px) {
+
+  .topnav a {
+    width: 27%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 51px;
+    background: white;
+    border-radius: 10px;
+  }
+
+  .nav-item {
+    margin-top: 6px;
+    margin-bottom: 7px;
+  }
+
+  .nav-links {
+    display: none;
+
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 21px;
+    width: 95%;
+    background-color: #333;
+    z-index: 10;
+    border-radius: 27px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+
+  .logo {
+    display: none;
+  }
+
+
+}
+
+@media screen and (max-width: 600px) {
+  #brand-logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container-1 {
+    padding: 5px;
+  }
+}

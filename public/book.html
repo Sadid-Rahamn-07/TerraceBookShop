@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Terrace Bookshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="stylesheets/navbar.css">
+    <link rel="stylesheet" href="stylesheets/search.css">
+
+    <!-- <link rel="stylesheet" href="stylesheets/account.css"> -->
+    <link rel="stylesheet" href="stylesheets/book.css">
+    <link rel="stylesheet" href="stylesheets/home.css">
+</head>
+
+<body>
+  <header>
+    <div id="app" class="header">
+      <div id="navi" class="topnav">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <a class="logo">
+          <img id="brand_logo" src="images/logo.png" alt="logo">
+        </a>
+
+        <div class="container-1">
+          <form onsubmit="search_books(event)" class="search" id="search-bar">
+            <input onclick="showPopup()" type="search" name="search" placeholder="search here..." id="search-box">
+            <button type="submit" class="fa fa-search" aria-label="Search"></button>
+          </form>
+          <div onclick="hidePopup()" id="popup-backdrop"></div>
+          <div id="autocomplete-display"></div>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+          <a class="nav-item" href="/index.html">Home</a>
+          <a class="nav-item" :href="linkUrl">{{username || 'Login'}}</a>
+          <a class="nav-item user_icon">
+           <img v-if="linkUrl !== '/user.html'"  :src="image_path" alt="User Icon" class="user_logo">
+          </a>
+          <a class="nav-item shopping_cart" href="wishlist.html"><i class="fas fa-heart shopping-icon"></i></a>
+          <a class="nav-item shopping_icon " href="shopping_cart.html"><i class="fas fa-shopping-cart shopping-icon"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+      <!--The end of the header of the book.html-->
+    <!--Below is the start of the book.html to display the information of each book-->
+
+    <!--This is the section where the product, price, description, add to cart,... be all the places-->
+    <!--The rest of R&R will be located underneath-->
+    <div id="page">
+        <div id="product_wrapper">
+            <div class="container_box"> <!--This is where the image of the product will be-->
+                <!--This is where the AJAX will input the image of the product-->
+                <img id="book_image" src="images/logo.png" alt="BookImage">
+
+                <!--Chile element of the book image-->
+                <div  id="book_wishlist_icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+
+            <!---Information about the book Title, Condition, Sellers, Posted Date-->
+            <div id="book_information_container">
+                <div id="book_title">
+                    <h1>Title Here</h1>
+                </div>
+                <div id="book_author">
+                    <p></p>
+                </div>
+                <div id="posted_date">
+                    <h3>Posted Date</h3>
+                    <span></span>
+                </div>
+                <div id="book_condition">
+                    <h3>Book Condition</h3>
+                    <span></span>
+                </div>
+                <div class="seller_name">
+                    <h3>Seller</h3>
+                    <span></span>
+                </div>
+                <div id="book_description">
+                    <h3>Description</h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div id="book_transaction_container">
+                <div id="book_price">
+                    <h1>Price Here</h1>
+                    <button type="button" id="cart_add" class="action_button">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_rr">
+            <h1>Reviews about seller</h1>
+            <div class="profile">
+                <img src="images/book1.jpg" alt="User Image" class="user_logo">
+                <div class="seller_name">
+                    <span style="font-size: 20pt;"></span>
+                </div>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <div id="reviews_ratings">
+                <div id="user_reviews_container">
+                    <div v-if="reviews.length === 0">
+                        <h2>No reviews for the seller</h2>
+                    </div>
+                    <div v-for="(review, index) in visibleReviews" :key="index" class="review_card">
+                        <div class="profile">
+                            <img src="images/book1.jpg" alt="User Image" class="user_logo">
+                            <span style="font-size: 15pt;" class="review_name">{{ review.reviewer_name}}</span>
+                        </div>
+                        <p id="review_comment">{{ review.review_text }}</p>
+                        <p id="review_stars">{{ '★'.repeat(review.review_rating) }} {{ '☆'.repeat(5 - review.review_rating) }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="showing_button_container">
+                <button v-if="reviews.length > 5 && this.visibleReviews.length < reviews.length" @click="showMore" type="button" class="action_button">Show more</button>
+                <button v-if="this.visibleReviews.length > 5" @click="showLess" type="button" class="action_button">Show less</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<!-- <script src="javascripts/home.js"></script> -->
+<script src="javascripts/book.js"></script>
